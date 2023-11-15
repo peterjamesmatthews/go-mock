@@ -1,17 +1,17 @@
-package app_test
+package application_test
 
 import (
 	"testing"
 
 	"go.uber.org/mock/gomock"
-	"pjm.dev/mock/app"
+	"pjm.dev/mock/application"
 	"pjm.dev/mock/mock_calculator"
 )
 
 func TestCoolAlgorithm(t *testing.T) {
 	ctrl := gomock.NewController(t)
 	mockCalculator := mock_calculator.NewMockCalculatorer(ctrl)
-
+	application := application.Application{Calculator: mockCalculator}
 	number := 100
 
 	mockCalculator.
@@ -38,7 +38,6 @@ func TestCoolAlgorithm(t *testing.T) {
 		Times(1).
 		Return(number)
 
-	application := app.Application{Calculator: mockCalculator}
 	if application.CoolAlgorithm(number) != number {
 		t.Fail()
 	}

@@ -1,7 +1,8 @@
-package app
+package application
 
-func (application *Application) CoolAlgorithm(x int) int {
-	var output int = x
+// CoolAlgorithm is an important bit of Application functionality that relies on the Calculatorer interface.
+func (application *Application) CoolAlgorithm(input int) int {
+	var output int = input
 
 	output = application.Calculator.Add(output, 0)
 	output = application.Calculator.Subtract(output, 0)
